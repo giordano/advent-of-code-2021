@@ -12,8 +12,8 @@ def part1(data):
 
 
 def part2(data, width=3):
-    windows = np.array([np.sum(data[i:i+width])
-                        for i in range(0, len(data)-width+1)])
+    windows = np.sum(np.lib.stride_tricks.sliding_window_view(data, width),
+                     axis=1)
     count = np.sum(np.diff(windows) > 0, axis=0)
     print(count)
     return
