@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-import os
-from pathlib import Path
+import os.path as path
 import sys
 import numpy as np
 
@@ -24,7 +23,7 @@ if __name__ == "__main__":
     if len(sys.argv) == 2:
         filename = sys.argv[1]
     else:
-        filename = os.path.join(Path(__file__).resolve().parent, 'input')
+        filename = path.join(path.dirname(__file__), 'input')
 
     data = np.loadtxt(filename)
     part1(data)
