@@ -2,6 +2,7 @@
 
 from os import path
 import sys
+import collections
 
 
 class Point():
@@ -63,7 +64,7 @@ def part1(data):
     points = []
     for line_segment in data:
         points += line_segment.covered_points(diagonal=False)
-    freqs = dict((x, points.count(x)) for x in set(points))
+    freqs = collections.Counter(points)
 
     print("Part 1:")
     print(f"    overlapping points: {sum(x > 1 for x in freqs.values())}")
@@ -75,7 +76,7 @@ def part2(data):
     points = []
     for line_segment in data:
         points += line_segment.covered_points(diagonal=True)
-    freqs = dict((x, points.count(x)) for x in set(points))
+    freqs = collections.Counter(points)
 
     print("Part 2:")
     print(f"    overlapping points: {sum(x > 1 for x in freqs.values())}")
